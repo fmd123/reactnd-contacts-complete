@@ -6,7 +6,7 @@ function ListContacts(props){
       {props.contacts.map((contact)=>(
         <li key = {contact.id} className = 'contact-list-item'>
           <div className = 'contact-avatar' style =
-            {{backgroundImage: `url(${contact.avatarURL})`}}/>
+            {{backgroundImage: `url(${contact.avatarURL})`, border: `1px solid #FF0000`}}/>
             <div className = 'contact-details'>
               <p>{contact.name}</p>
               <p>{contact.email}</p>
