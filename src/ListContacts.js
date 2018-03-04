@@ -17,6 +17,10 @@ updateQuery = (query)=>{
   this.setState({query: query.trim() })
 }
 
+clearQuery = ()=> {
+  this.setState({query: ''})
+}
+
   render() {
     const { contacts, onDeleteContact} = this.props
     const { query } = this.state
@@ -33,16 +37,21 @@ updateQuery = (query)=>{
 
     return (
 <div className = 'list-contacts'>
-  {JSON.stringify(this.state)}
   <div className = "list-contacts-top">
     <input
       className = 'search-contacts'
       type = 'text'
       placeholder = 'Search Contacts'
-      value = {this.state.query}
+      value = {query}
       onChange = {(event)=>this.updateQuery(event.target.value)}
     />
     </div>
+      {showingContacts.length !== contacts.length && (
+        <div className = 'showing-contacts'>
+          <span>Now showing {showingContacts.length} of {contacts.length} total</span>
+          <button onClick = {this.clearQuery}>Show All</button>
+        </div>
+      )}
       <ol className='contact-list'>
         {showingContacts.map((contact) => (
           <li key={contact.id} className='contact-list-item'>
